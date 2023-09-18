@@ -11,7 +11,7 @@ h1 {
   margin: 0 auto;
   margin-top: 20px;
   padding: 0;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   user-select: none;
 }
 
@@ -24,15 +24,6 @@ h1 {
   user-select: none;
 }
 
-#gameplay-text {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 25px;
-  color: rgb(142, 81, 255);
-  padding: 0;
-  user-select: none;
-}
-
 #grid {
   display: grid;
   grid-gap: 5px;
@@ -41,45 +32,41 @@ h1 {
   justify-content: center;
 }
 
-.grid-block-animated {
+#guess-grid {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: 150px 150px 150px;
+  justify-content: center;
+}
+
+.grid-block-intro-screen {
   padding: 10px;
-  background-color: #ffffff1b;
+  background-color: #ffffff;
   border-radius: 5px;
   animation: change-background 15s ease-in-out infinite;
   transform-style: preserve-3d;
   transition: all 0.3s ease;
 }
 
-.grid-block-flashing {
-  padding: 10px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  animation: none;
-  transition: all 0.6s ease;
-}
-
-.grid-block-flashing:hover {
-  background-color: #ffffff;
-}
-
-.grid-block-animated:hover {
+.grid-block-intro-screen:hover {
   transform: scale(0.9);
   opacity: 0.8;
 }
 
-.blink {
-  animation: blinker 1s step-start;
+.grid-block-pre-flash {
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
-@keyframes blinker {
-  50% {
-    background-color: #bd9aff;
-  }
+.grid-block-pre-flash:hover {
+  background-color: #ffffff;
 }
 
-.grid-block-start {
+.grid-guess-block {
   transition: all 0.8s ease;
-  transform: rotateY(360deg);
   padding: 10px;
   background-color: #ffffff;
   border-radius: 5px;
@@ -87,13 +74,11 @@ h1 {
   transition: all 0.3s ease;
 }
 
-.grid-block-start:hover {
-  background-color: rgb(189, 154, 255);
+.grid-guess-block:hover {
   transform: scale(0.95);
 }
 
-
-#start-button {
+#start-button{
   border: none;
   color: black;
   background-color: white;
@@ -132,6 +117,7 @@ h1 {
   cursor: pointer;
 }
 
+
 #flash-sequence-button {
   border: none;
   color: black;
@@ -158,10 +144,6 @@ h1 {
   background-color: #b055ff;
   color: white;
   transform: scale(0.99);
-}
-
-.invisible {
-  display: none;
 }
 
 @keyframes change-background {
@@ -199,4 +181,3 @@ h1 {
     background: #ff3131;
   }
 }
-
