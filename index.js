@@ -29,9 +29,12 @@ startGameButton.addEventListener("click", () => {
 
 nextLevelButton.addEventListener("click", () => {
   sequenceNumber++;
+
   nextLevelButton.style.display = "none";
   gameDescription.textContent = `Sequence ${sequenceNumber}`;
+
   Array.from(gridBlocks).forEach(function (block) {
+    block.classList.remove("blink");
     block.classList.remove("grid-block-animated");
     block.classList.remove("grid-block-flashing");
     block.classList.add("grid-block-start");
@@ -53,10 +56,22 @@ flashSequenceButton.addEventListener("click", () => {
 
 function flashSequence(sequenceNumber) {
   let flashingSequence = [];
-  let block;
-  for (let i = 1; i <= sequenceNumber; i++) {
-    block = Math.floor(Math.random() * 9) + 1;
+
+  let index = 0;
+  const loop = setInterval(() => {
+    let block = Math.floor(Math.random() * 9) + 1;
     flashingSequence.push(block);
-  }
-  console.log(flashingSequence);
+    if (index === sequenceNumber - 1) {
+      clearInterval(loop);
+    }
+    currentBlock = document.getElementById(
+      `block-${flashingSequence[index++]}`
+    );
+    currentBlock.style.backgroundColor = "#bd9aff"; // Change color
+
+    // Set a timer to run the passed function after 1000 milliseconds (1 second)
+    setTimeout(function () {
+      currentBlock.style.backgroundColor = "white"; // Change the color back to the original
+    }, 1000);
+  }, 2000);
 }
