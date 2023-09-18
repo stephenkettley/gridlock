@@ -5,31 +5,35 @@ body {
 }
 
 h1 {
-  font-size: 96px;
+  font-size: 70px;
   color: white;
   text-align: center;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 0;
+  margin-bottom: 10px;
+  user-select: none;
 }
 
 #game-desc {
   text-align: center;
   margin-bottom: 30px;
-  font-size: 30px;
+  font-size: 25px;
   color: rgb(255, 255, 255);
   padding: 0;
+  user-select: none;
 }
 
 #gameplay-text {
   text-align: center;
   margin-bottom: 30px;
-  font-size: 30px;
+  font-size: 25px;
   color: rgb(142, 81, 255);
   padding: 0;
+  user-select: none;
 }
 
-.grid {
+#grid {
   display: grid;
   grid-gap: 5px;
   grid-template-columns: 150px 150px 150px;
@@ -41,35 +45,49 @@ h1 {
   padding: 10px;
   background-color: #ffffff1b;
   border-radius: 5px;
-  animation: change-background 20s ease-in-out infinite;
+  animation: change-background 15s ease-in-out infinite;
   transform-style: preserve-3d;
-  transition: all 1s ease;
+  transition: all 0.3s ease;
 }
 
-.grid-block-normal {
+.grid-block-flashing {
   padding: 10px;
   background-color: #ffffff;
   border-radius: 5px;
   animation: none;
-  transform-style: preserve-3d;
-  transition: all 0.2s ease;
+  transition: all 0.6s ease;
 }
-.grid-block-normal:hover {
-  background-color: rgb(189, 154, 255);
+
+.grid-block-flashing:hover {
+  background-color: #ffffff;
 }
+
 .grid-block-animated:hover {
-  transform: rotateY(180deg)
+  transform: scale(0.9);
+  opacity: 0.8;
 }
 
 .grid-block-start {
+  transition: all 0.8s ease;
   transform: rotateY(360deg);
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  animation: none;
+  transition: all 0.3s ease;
 }
+
+.grid-block-start:hover {
+  background-color: rgb(189, 154, 255);
+  transform: scale(0.95);
+}
+
 
 #start-button {
   border: none;
   color: black;
   background-color: white;
-  font-size: 36px;
+  font-size: 24px;
   border-radius: 8px;
   padding: 10px 20px;
   display: block;
@@ -77,10 +95,14 @@ h1 {
   margin-top: 10px;
   width: 460px;
   transition: all 0.2s ease;
+  font-family: monospace;
+  cursor: pointer;
+  user-select: none;
 }
 
 #start-button:hover {
-  background-color: #bcbcbc;
+  background-color: #4cff73;
+  color: white;
   transform: scale(0.99);
 }
 
@@ -88,7 +110,7 @@ h1 {
   border: none;
   color: black;
   background-color: white;
-  font-size: 36px;
+  font-size: 24px;
   border-radius: 8px;
   padding: 10px 20px;
   display: block;
@@ -96,10 +118,35 @@ h1 {
   margin-top: 10px;
   width: 460px;
   transition: all 0.2s ease;
+  font-family: monospace;
+  cursor: pointer;
+}
+
+#flash-sequence-button {
+  border: none;
+  color: black;
+  background-color: white;
+  font-size: 24px;
+  border-radius: 8px;
+  padding: 10px 20px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 460px;
+  transition: all 0.2s ease;
+  font-family: monospace;
+  cursor: pointer;
 }
 
 #next-level-button:hover {
-  background-color: #bcbcbc;
+  background-color: #4cff73;
+  color: white;
+  transform: scale(0.99);
+}
+
+#flash-sequence-button:hover {
+  background-color: #b055ff;
+  color: white;
   transform: scale(0.99);
 }
 
