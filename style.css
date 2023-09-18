@@ -40,6 +40,22 @@ h1 {
   justify-content: center;
 }
 
+#game-grid {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: 150px 150px 150px;
+  justify-content: center;
+}
+
+#purple-grid {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: 150px 150px 150px;
+  justify-content: center;
+}
+
 .grid-block-intro-screen {
   padding: 10px;
   background-color: #ffffff;
@@ -68,13 +84,35 @@ h1 {
 .grid-guess-block {
   transition: all 0.8s ease;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: #ff0000;
   border-radius: 5px;
   animation: none;
   transition: all 0.3s ease;
 }
 
 .grid-guess-block:hover {
+  transform: scale(0.95);
+}
+
+.game-block {
+  transition: all 0.8s ease;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  animation: none;
+  transition: all 0.3s ease;
+}
+
+.purple-block {
+  transition: all 0.8s ease;
+  padding: 10px;
+  background-color: #b055ff;
+  border-radius: 5px;
+  animation: none;
+  transition: all 0.3s ease;
+}
+
+.game-block:hover {
   transform: scale(0.95);
 }
 
