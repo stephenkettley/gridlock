@@ -122,9 +122,10 @@ greenGrid.style.display = "none";
 redGrid.style.display = "none";
 
 startButton.addEventListener("click", startButtonFunctionality);
+flashSequenceButton.addEventListener("click", flashSequenceButtonFunctionality);
+nextLevelButton.addEventListener("click", nextLevelButtonFunctionality);
 
 function startButtonFunctionality() {
-  console.log("start has been clicked");
   startButton.style.display = "none";
   flashSequenceButton.style.display = "block";
   sequenceNumber = 1;
@@ -135,7 +136,7 @@ function startButtonFunctionality() {
   redGrid.style.display = "none";
 }
 
-flashSequenceButton.addEventListener("click", () => {
+function flashSequenceButtonFunctionality() {
   flashSequenceButton.style.display = "none";
   flashingSequence = [];
   guessSequence = [];
@@ -146,12 +147,10 @@ flashSequenceButton.addEventListener("click", () => {
   const loop = setInterval(() => {
     let block = Math.floor(Math.random() * 9) + 1;
     flashingSequence.push(block);
-    console.log(flashingSequence);
 
     if (index === sequenceNumber - 1) {
       clearInterval(loop);
       setTimeout(function () {
-        console.log("sequence done.");
         purpleGrid.style.display = "grid";
         gridGameContainer.style.display = "none";
         setTimeout(function () {
@@ -159,23 +158,22 @@ flashSequenceButton.addEventListener("click", () => {
           purpleGrid.style.display = "none";
         }, 200);
         gameDescription.textContent = "Guess!";
-        console.log(flashingSequence);
       }, 1500);
     }
 
     currentBlock = document.getElementById(
       `game-block-${flashingSequence[index++]}`
     );
-    console.log(currentBlock);
+
     currentBlock.style.backgroundColor = "#b055ff";
 
     setTimeout(function () {
       currentBlock.style.backgroundColor = "white";
     }, 200);
   }, 1500);
-});
+}
 
-nextLevelButton.addEventListener("click", () => {
+function nextLevelButtonFunctionality() {
   sequenceNumber++;
   nextLevelButton.style.display = "none";
   gameDescription.style.color = "#b055ff";
@@ -185,9 +183,7 @@ nextLevelButton.addEventListener("click", () => {
   gridStartContainer.style.display = "none";
   gridGameContainer.style.display = "grid";
   greenGrid.style.display = "none";
-  console.log(guessSequence);
-  console.log(guessNumber);
-});
+}
 
 function checkIfGuessWrongOrRight(guessNumber, blockNumberClicked) {
   if (blockNumberClicked == flashingSequence[guessNumber - 1]) {
