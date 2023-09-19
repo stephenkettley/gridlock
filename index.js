@@ -127,12 +127,12 @@ function startButtonFunctionality() {
   console.log("start has been clicked");
   startButton.style.display = "none";
   flashSequenceButton.style.display = "block";
+  sequenceNumber = 1;
   gameDescription.textContent = `Sequence ${sequenceNumber}`;
   gameDescription.style.color = "#b055ff";
   gridStartContainer.style.display = "none";
   gridGameContainer.style.display = "grid";
   redGrid.style.display = "none";
-  sequenceNumber = 1;
 }
 
 flashSequenceButton.addEventListener("click", () => {
