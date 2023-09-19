@@ -1,6 +1,7 @@
 let sequenceNumber = 1;
-let clickIndex;
+let guessNumber = 0;
 let flashingSequence;
+let guessSequence = [];
 
 const allContent = document.createElement("div");
 allContent.class = "allContent";
@@ -36,6 +37,14 @@ for (let i = 1; i <= 9; i++) {
   const gridGuessBlock = document.createElement("div");
   gridGuessBlock.classList.add("grid-guess-block");
   gridGuessBlock.id = `guess-block-${i}`;
+  gridGuessBlock.addEventListener("click", () => {
+    let blockNumberClicked = gridGuessBlock.id.charAt(
+      gridGuessBlock.id.length - 1
+    );
+    guessSequence.push(blockNumberClicked);
+    guessNumber++;
+    checkIfGuessWrongOrRight(guessNumber, blockNumberClicked);
+  });
   gridGuessContainer.appendChild(gridGuessBlock);
 }
 
@@ -61,10 +70,32 @@ for (let i = 1; i <= 9; i++) {
   purpleGrid.appendChild(purpleBlock);
 }
 
+const greenGrid = document.createElement("div");
+greenGrid.id = "green-grid";
+allContent.appendChild(greenGrid);
+
+for (let i = 1; i <= 9; i++) {
+  const greenBlock = document.createElement("div");
+  greenBlock.classList.add("green-block");
+  greenBlock.id = `green-block-${i}`;
+  greenGrid.appendChild(greenBlock);
+}
+
+const redGrid = document.createElement("div");
+redGrid.id = "red-grid";
+allContent.appendChild(redGrid);
+
+for (let i = 1; i <= 9; i++) {
+  const redBlock = document.createElement("div");
+  redBlock.classList.add("red-block");
+  redBlock.id = `red-block-${i}`;
+  redGrid.appendChild(redBlock);
+}
+
 const nextLevelButton = document.createElement("button");
 nextLevelButton.id = "next-level-button";
 nextLevelButton.classList.add("next-level-button");
-nextLevelButton.textContent = "click to go to next level";
+nextLevelButton.textContent = "click for next level";
 allContent.appendChild(nextLevelButton);
 
 const startButton = document.createElement("button");
@@ -87,6 +118,8 @@ gridGuessContainer.style.display = "none";
 gridStartContainer.style.display = "grid";
 gridGameContainer.style.display = "none";
 purpleGrid.style.display = "none";
+greenGrid.style.display = "none";
+redGrid.style.display = "none";
 
 startButton.addEventListener("click", startButtonFunctionality);
 
@@ -98,11 +131,15 @@ function startButtonFunctionality() {
   gameDescription.style.color = "#b055ff";
   gridStartContainer.style.display = "none";
   gridGameContainer.style.display = "grid";
+  redGrid.style.display = "none";
+  sequenceNumber = 1;
 }
 
 flashSequenceButton.addEventListener("click", () => {
   flashSequenceButton.style.display = "none";
   flashingSequence = [];
+  guessSequence = [];
+  guessNumber = 0;
 
   // flash blocks
   let index = 0;
@@ -120,10 +157,10 @@ flashSequenceButton.addEventListener("click", () => {
         setTimeout(function () {
           gridGuessContainer.style.display = "grid";
           purpleGrid.style.display = "none";
-          nextLevelButton.style.display = "block";
         }, 200);
         gameDescription.textContent = "Guess!";
-      }, 2000);
+        console.log(flashingSequence);
+      }, 1500);
     }
 
     currentBlock = document.getElementById(
@@ -135,56 +172,38 @@ flashSequenceButton.addEventListener("click", () => {
     setTimeout(function () {
       currentBlock.style.backgroundColor = "white";
     }, 200);
-  }, 2000);
+  }, 1500);
 });
-
-function flashSequence(sequenceNumber) {}
-
-// function checkSequence(flashingSequence) {
-//   clickIndex = -1;
-
-//   Array.from(gridGuessBlocks).forEach(function (block) {
-//     block.addEventListener("click", () => {
-//       clickIndex++;
-//       guessBlock = block.id.charAt(block.id.length - 1);
-
-//       if (guessBlock == flashingSequence[clickIndex]) {
-//         if (clickIndex + 1 === flashingSequence.length) {
-//           Array.from(gridBlocks).forEach(function (block) {
-//             block.style.pointerEvents = "none";
-//             block.style.backgroundColor = "#68ff7c";
-//           });
-//           gameDescriptionription.style.color = "#68ff7c";
-//           gameDescriptionription.textallContent = "Correct!";
-//           nextLevelButton.style.display = "block";
-//         }
-//       } else {
-//         console.log("wrong");
-//       }
-//     });
-//   });
-// }
 
 nextLevelButton.addEventListener("click", () => {
   sequenceNumber++;
   nextLevelButton.style.display = "none";
+  gameDescription.style.color = "#b055ff";
   gameDescription.textContent = `Sequence ${sequenceNumber}`;
   flashSequenceButton.style.display = "block";
   gridGuessContainer.style.display = "none";
   gridStartContainer.style.display = "none";
   gridGameContainer.style.display = "grid";
-  // Array.from(gridBlocks).forEach(function (block) {
-  //   block.style.pointerEvents = "all";
-  //   block.classList.remove("grid-block-animated");
-  //   block.classList.remove("grid-block-flashing");
-  //   block.classList.add("grid-block-start");
-  //   gameDescriptionription.style.color = "#b055ff";
-  //   gameDescriptionription.textallContent = `Sequence ${sequenceNumber}`;
-  //   flashSequenceButton.style.display = "block";
-
-  //   Array.from(gridBlocks).forEach(function (block) {
-  //     block.style.pointerEvents = "none";
-  //     block.style.backgroundColor = "#ffffff";
-  //   });
-  // });
+  greenGrid.style.display = "none";
+  console.log(guessSequence);
+  console.log(guessNumber);
 });
+
+function checkIfGuessWrongOrRight(guessNumber, blockNumberClicked) {
+  if (blockNumberClicked == flashingSequence[guessNumber - 1]) {
+    if (guessNumber == flashingSequence.length) {
+      nextLevelButton.style.display = "block";
+      gameDescription.style.color = "#4cff73";
+      gameDescription.textContent = "Correct!";
+      gridGuessContainer.style.display = "none";
+      greenGrid.style.display = "grid";
+    }
+  } else {
+    gridGuessContainer.style.display = "none";
+    redGrid.style.display = "grid";
+    gameDescription.textContent = "Game Over!";
+    gameDescription.style.color = "#ff4545";
+    startButton.textContent = "click to start again";
+    startButton.style.display = "block";
+  }
+}
