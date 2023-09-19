@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Press Start 2P');
+@import url('https://fonts.googleapis.com/css?family=VT323');
 
 body {
   margin: 0;
@@ -7,20 +8,20 @@ body {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 36px;
   color: white;
   text-align: center;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 60px;
   padding: 0;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   user-select: none;
 }
 
 #game-desc {
   text-align: center;
   margin-bottom: 30px;
-  font-size: 18px;
+  font-size: 12px;
   letter-spacing: 2px;
   color: rgb(255, 255, 255);
   padding: 0;
@@ -165,7 +166,7 @@ h1 {
   border: none;
   color: black;
   background-color: white;
-  font-size: 16px;
+  font-size: 12px;
   letter-spacing: 2px;
   border-radius: 8px;
   padding: 10px 20px;
@@ -189,7 +190,7 @@ h1 {
   border: none;
   color: black;
   background-color: white;
-  font-size: 16px;
+  font-size: 12px;
   letter-spacing: 2px;
   border-radius: 8px;
   padding: 10px 20px;
@@ -208,7 +209,7 @@ h1 {
   border: none;
   color: black;
   background-color: white;
-  font-size: 16px;
+  font-size: 12px;
   letter-spacing: 2px;
   border-radius: 8px;
   padding: 10px 20px;
