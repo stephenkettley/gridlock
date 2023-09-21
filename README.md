@@ -6,7 +6,8 @@ Level 1 will flash one block, level 2 will flash 2 blocks and so on. There are i
 
 Have fun!
 
-![image](https://github.com/stephenkettley/gridlock/assets/109079565/8e3b143f-9f55-41da-af92-0b8ee98515fb)
+![image](https://github.com/stephenkettley/gridlock/assets/109079565/f1a81c32-7224-475e-8806-4d4f5f106c4e)
+
 
 
 
