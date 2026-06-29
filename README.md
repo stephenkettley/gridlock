@@ -8,6 +8,8 @@ Have fun! See how many levels you can complete! See how good your memory is! Goo
 
 <img width="904" alt="image" src="https://github.com/stephenkettley/gridlock/assets/109079565/f4f29717-9db7-49a3-bd58-d6f83cafa537">
 
+Refactor this code at some point.
+
 
 
 
